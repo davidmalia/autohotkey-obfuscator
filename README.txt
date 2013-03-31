@@ -3,7 +3,7 @@
 	parameters, and variables. It can automatically use the dynamic
 	variable creation features of autohotkey to create breakable
 	code sections and function path rewiring.
-
+ 
 	Copyright (C) 2011-2013  David Malia
 
 	This program is free software: you can redistribute it and/or 
