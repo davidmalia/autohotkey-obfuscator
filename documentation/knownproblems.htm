@@ -58,13 +58,15 @@ You can sometimes have the shocking problem where some of the words on the inter
 <br>&nbsp;<br><a href="#invalidreplacements">How the obfuscator should be modified to fix this problem.</a>
 </div>
 
-<h2>Comment Tags In Between Function and Label Sections Can Cause a Problem</h2>
+<h2>Comment Tags Used to Comment Out Whole Function and Label Sections</h2>
 <div>
-/* */ style comment tags can sometimes cause a problem when they are placed between function and label sections and you choose to have the obfuscator randomize the order of the functions and labels. In this case your obfuscated script will complain with a parse error as soon as you try to run it. It might complain that a function or label referred to in your code is not found. But then if you reobfuscate your script with randomize function order turned off, the script will run correctly.
+/* */ style comment tags can cause a problem when they are used to comment out a whole function or label section and you choose to have the obfuscator randomize the order of the functions and labels. The randomize will cause the comment tags to get split up and end up commenting out the wrong part of the code. In this case your obfuscated script will complain with a parse error as soon as you try to run it. It might complain that a function or label referred to in your code is not found. But then if you reobfuscate your script with randomize function order turned off, the script will run correctly. 
 
-<br>&nbsp;<br>This problem is caused by /* */ style comments between function and label sections being too close to those sections. The best idea is to leave at least one blank line before and after your /* */ comments that are between stuff. There is no problem with these kinds of comments found inside functions and label sections, and there is no problem with semicolon style comments.
+<br>&nbsp;<br>To diagnose this problem, search your obfuscated script for the beginning comment tags '/*'. Look for ones found outside functions and label sections. You will find one that is started but not terminated when it should be.
 
-<br>&nbsp;<br>This problem is caused by an error in how the obfuscator 'divides up' stuff it finds in between functions and labels. Namely, the beginning /* and the ending */ get separated and end up in different sections of code which will cause a bunch of code to be commented out when it shouldn't be. 
+<br>&nbsp;<br>There is no solution to this problem right now except to not include these comment tags used this way in your script to be obfuscated.
+
+<br>&nbsp;<br>Using the /* */ comment tags within function or label sections is handled ok and not affected by this bug. 
 </div>
 
 <h2>Using Single Letter Object Names Can Cause Invalid Obfuscator Replacements</h2>
